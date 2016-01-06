@@ -18,9 +18,9 @@ public class AppNotificarRecordatorios1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Vista.Pri EJE = new Pri();
-        EJE.getContentPane().setBackground(Color.lightGray);
-        EJE.setVisible(true);
+        Vista.Pri iniciarVentana = new Pri();
+        iniciarVentana.getContentPane().setBackground(Color.lightGray);
+        iniciarVentana.setVisible(true);
 
     }
 
