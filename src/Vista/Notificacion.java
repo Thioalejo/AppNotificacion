@@ -77,6 +77,8 @@ public class Notificacion extends javax.swing.JFrame {
 
         popupMenu1 = new java.awt.PopupMenu();
         menuItem1 = new java.awt.MenuItem();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -102,6 +104,8 @@ public class Notificacion extends javax.swing.JFrame {
         menuItem1.getAccessibleContext().setAccessibleDescription("1");
 
         popupMenu1.getAccessibleContext().setAccessibleDescription("");
+
+        jScrollPane2.setViewportView(jTree1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
@@ -225,6 +229,8 @@ public class Notificacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTree jTree1;
     private javax.swing.JTextArea lblParaMostrarNotificacion;
     private java.awt.MenuItem menuItem1;
     private java.awt.PopupMenu popupMenu1;
