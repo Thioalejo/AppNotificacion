@@ -5,6 +5,7 @@
 package Vista;
 
 import Model.Time;
+import com.sun.xml.internal.ws.policy.sourcemodel.ModelNode;
 import java.awt.Color;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
@@ -27,8 +28,7 @@ public class Notificacion extends javax.swing.JFrame {
     /**
      * Creates new form Notificacion
      */
-    public Notificacion() 
-    {   
+    public Notificacion() {
         ///para poner icono a la aplicacion (this.getClass().getRe... busca en el proyecto y pone la imagen)
         imagenIcon = new ImageIcon(this.getClass().getResource("/Imagenes/Alarma2.png"));
         //con this.set ...  se ubica la imagen en el frame.
@@ -38,34 +38,31 @@ public class Notificacion extends javax.swing.JFrame {
         initComponents();
     }
 //metodo que pone la notificacion al iniciar la ventana
-     private void instanciarTray()
-    {
-        trayIcon = new TrayIcon(imagenIcon.getImage(), "Abrir para editar" , popupMenu1 );
+
+    private void instanciarTray() {
+        trayIcon = new TrayIcon(imagenIcon.getImage(), "Abrir para editar", popupMenu1);
         trayIcon.setImageAutoSize(true);
-        systemtray = systemtray.getSystemTray();       
+        systemtray = systemtray.getSystemTray();
     }
 
-     ///metodo que iniciara la notificacion, la pone en false, que indica que se pone en la barra de notificacion
-     private void iniciarIcono()
-     {
-             try 
-        {
-            if(SystemTray.isSupported())
-            {
+    ///metodo que iniciara la notificacion, la pone en false, que indica que se pone en la barra de notificacion
+    private void iniciarIcono() {
+        try {
+            if (SystemTray.isSupported()) {
                 systemtray.add(trayIcon);
                 this.setVisible(false);
             }
-        } catch (Exception e) 
-        {
-            JOptionPane.showMessageDialog(this,"Excepcion: "+ e.getMessage());
-        }  
-     }
-     
-     //metodo que recibe el dato a mostrar como notificacion
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Excepcion: " + e.getMessage());
+        }
+    }
+
+    //metodo que recibe el dato a mostrar como notificacion
     public void DatoAMostar(String Dato) {
 
         lblParaMostrarNotificacion.setText(Dato);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,8 +150,18 @@ public class Notificacion extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lblParaMostrarNotificacion);
 
         btnTerminarNotificacion.setText("Terminar");
+        btnTerminarNotificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTerminarNotificacionActionPerformed(evt);
+            }
+        });
 
         btnCincoMinutosMas.setText("5 Minutos Mas");
+        btnCincoMinutosMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCincoMinutosMasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,12 +204,32 @@ public class Notificacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void menuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem1ActionPerformed
-        
+
     }//GEN-LAST:event_menuItem1ActionPerformed
 
     private void popupMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popupMenu1ActionPerformed
-     
+
     }//GEN-LAST:event_popupMenu1ActionPerformed
+
+    private void btnTerminarNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarNotificacionActionPerformed
+        dispose();
+        Vista.Pri run = new Pri();
+        run.getContentPane().setBackground(Color.LIGHT_GRAY);
+        run.setVisible(true);
+        dispose();
+        systemtray.remove(trayIcon);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnTerminarNotificacionActionPerformed
+
+    private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
+        Model.Time TiempoExtra = new Model.Time();
+        String TiempoEnHoras="0",TiempoEnMinutos="5",TiempoEnSegundos="0";
+        try {
+            TiempoExtra.Tiempo(TiempoEnHoras, TiempoEnMinutos, TiempoEnSegundos);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnCincoMinutosMasActionPerformed
 
     /**
      * @param args the command line arguments

@@ -175,11 +175,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Terminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTerminarNotificacionActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCincoMinutosMas">
       <Properties>
         <Property name="text" type="java.lang.String" value="5 Minutos Mas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCincoMinutosMasActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
