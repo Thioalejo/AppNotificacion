@@ -88,19 +88,9 @@ public class Notificacion extends javax.swing.JFrame {
 
         popupMenu1.setLabel("popupMenu1");
         popupMenu1.setName("");
-        popupMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                popupMenu1ActionPerformed(evt);
-            }
-        });
 
         menuItem1.setLabel("Menu Desplegable");
         menuItem1.setName("txt");
-        menuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItem1ActionPerformed(evt);
-            }
-        });
         popupMenu1.add(menuItem1);
         menuItem1.getAccessibleContext().setAccessibleDescription("1");
 
@@ -204,14 +194,6 @@ public class Notificacion extends javax.swing.JFrame {
         systemtray.remove(trayIcon);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void menuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem1ActionPerformed
-
-    }//GEN-LAST:event_menuItem1ActionPerformed
-
-    private void popupMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popupMenu1ActionPerformed
-
-    }//GEN-LAST:event_popupMenu1ActionPerformed
 
     private void btnTerminarNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarNotificacionActionPerformed
         dispose();

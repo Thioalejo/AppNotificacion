@@ -10,9 +10,6 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
       </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="popupMenu1ActionPerformed"/>
-      </Events>
       <SubComponents>
         <MenuItem class="java.awt.MenuItem" name="menuItem1">
           <Properties>
@@ -22,9 +19,6 @@
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="1"/>
           </AccessibilityProperties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem1ActionPerformed"/>
-          </Events>
         </MenuItem>
       </SubComponents>
     </Menu>
