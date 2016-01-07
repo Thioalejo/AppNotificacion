@@ -196,13 +196,15 @@ public class Notificacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnTerminarNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarNotificacionActionPerformed
-        dispose();
-        Vista.Pri run = new Pri();
-        run.getContentPane().setBackground(Color.LIGHT_GRAY);
-        run.setVisible(true);
-        dispose();
-        systemtray.remove(trayIcon);
-        this.setVisible(false);
+            System.exit(0);
+
+//        dispose();
+//        Vista.Pri run = new Pri();
+//        run.getContentPane().setBackground(Color.LIGHT_GRAY);
+//        run.setVisible(true);
+//        dispose();
+//        systemtray.remove(trayIcon);
+//        this.setVisible(false);
     }//GEN-LAST:event_btnTerminarNotificacionActionPerformed
 
     private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
