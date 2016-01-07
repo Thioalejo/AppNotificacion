@@ -233,7 +233,7 @@ public class Pri extends javax.swing.JFrame {
         
         } catch (Exception e) 
         {
-            JOptionPane.showMessageDialog(null, "EError al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + e.getMessage());
         }
         
         
