@@ -33,7 +33,6 @@ public class Pri extends javax.swing.JFrame {
         this.setIconImage(imagenIcon.getImage());
         //instanciarTray();
         initComponents();
-
     }
 
     /**
@@ -60,28 +59,7 @@ public class Pri extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        Popup.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PopupMouseClicked(evt);
-            }
-        });
-
         jMenuItem1.setText("Primer Pano");
-        jMenuItem1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jMenuItem1ItemStateChanged(evt);
-            }
-        });
-        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseClicked(evt);
-            }
-        });
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
         Popup.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -199,57 +177,38 @@ public class Pri extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         try {
-            if ("".equals(txtTiempoenHoras.getText()) || "".equals(txtTiempoenMinutos.getText()) || "".equals(txtTiempoenSegundos.getText())) {
+            if ("".equals(txtTiempoenHoras.getText())
+                    || "".equals(txtTiempoenMinutos.getText())
+                    || "".equals(txtTiempoenSegundos.getText())) {
 
-            JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
+                JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
+            } else {
+                // /se crea instancia del objeto de la pantalla notificacion y se le da un color tamaño y posicion, 
+                //y se le envia el dato de tarea pendiente
+                Vista.Notificacion run = new Notificacion();
+                run.getContentPane().setBackground(Color.LIGHT_GRAY);
+                run.DatoAMostar(txtTareaPendiente.getText());
+                run.setLocation(980, 580);
+                run.setAlwaysOnTop(true);
+                dispose();
 
-        } 
-            
-            else 
-        {
-            // /se crea instancia del objeto de la pantalla notificacion y se le da un color tamaño y posicion, 
-            //y se le envia el dato de tarea pendiente
-            Vista.Notificacion run = new Notificacion();
-            run.getContentPane().setBackground(Color.LIGHT_GRAY);
-            run.DatoAMostar(txtTareaPendiente.getText());
-            run.setLocation(980, 580);
-            run.setAlwaysOnTop(true);
-            dispose();
+                ///instancia del tiempo para que espere el tiempo ingresado por el usuario
+                Model.Time tiempo = new Time();
+                try {   //se envian los datos de hora, minutos y tiempo
+                    tiempo.Tiempo(txtTiempoenHoras.getText(), txtTiempoenMinutos.getText(), txtTiempoenSegundos.getText());
 
-            ///instancia del tiempo para que espere el tiempo ingresado por el usuario
-            Model.Time tiempo = new Time();
-            try {   //se envian los datos de hora, minutos y tiempo
-                tiempo.Tiempo(txtTiempoenHoras.getText(), txtTiempoenMinutos.getText(), txtTiempoenSegundos.getText());
-                
-            } catch (Exception ex) 
-            {
-                JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
+                }
+                run.setVisible(true);
             }
-            run.setVisible(true);
-        }
 
-        
-        } catch (Exception e) 
-        {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + e.getMessage());
         }
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-        
-    }//GEN-LAST:event_jMenuItem1MouseClicked
-
-    private void jMenuItem1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jMenuItem1ItemStateChanged
-        
-    }//GEN-LAST:event_jMenuItem1ItemStateChanged
 
     //para validar que el txt solo reciba numeros y no letras
     private void txtTiempoenHorasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoenHorasKeyTyped
@@ -291,11 +250,6 @@ public class Pri extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtTiempoenSegundosKeyTyped
-
-    private void PopupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PopupMouseClicked
-        systemtray.remove(trayIcon);
-       this.setVisible(true);
-    }//GEN-LAST:event_PopupMouseClicked
 
     /**
      * @param args the command line arguments

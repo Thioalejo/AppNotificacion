@@ -39,6 +39,7 @@ public class Time {
 
     }
 
+    //logica del tiempo, para validar el tiempo ingresado por el usuario.
     public void Tiempo(
             String TiempoEnHoras,
             String TiempoEnMinutos,
