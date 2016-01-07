@@ -18,29 +18,22 @@ public class Time {
 
     private static int horas = 0, minutos = 0, segundos = 0;
 
+    // get para acceder a la informacion de las variables, sin get 
+    //para evitar daños fuera de la clase
+    
     public int getHoras() {
         return horas;
     }
 
-    public void setHoras(int horas) {
-        this.horas = horas;
-    }
 
     public int getMinutos() {
         return minutos;
-    }
-
-    public void setMinutos(int minutos) {
-        this.minutos = minutos;
     }
 
     public int getSegundos() {
         return segundos;
     }
 
-    public void setSegundos(int segundos) {
-        this.segundos = segundos;
-    }
 
     public Time() {
 
