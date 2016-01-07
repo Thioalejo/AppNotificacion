@@ -222,13 +222,26 @@ public class Notificacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTerminarNotificacionActionPerformed
 
     private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
+        dispose();
         Model.Time TiempoExtra = new Model.Time();
-        String TiempoEnHoras="0",TiempoEnMinutos="5",TiempoEnSegundos="0";
-        try {
+        String TiempoEnHoras = "0", TiempoEnMinutos = "0", TiempoEnSegundos = "5";
+        
+        try 
+        {
             TiempoExtra.Tiempo(TiempoEnHoras, TiempoEnMinutos, TiempoEnSegundos);
-        } catch (InterruptedException ex) {
+        } 
+        catch (InterruptedException ex) 
+        {
             Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
         }
+        dispose();
+        Notificacion NotificacionExtra = new Notificacion();
+        NotificacionExtra.setVisible(true);
+        NotificacionExtra.setLocation(980, 580);
+        NotificacionExtra.setAlwaysOnTop(true);
+        systemtray.remove(trayIcon);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_btnCincoMinutosMasActionPerformed
 
     /**

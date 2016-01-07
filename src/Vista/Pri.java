@@ -265,7 +265,7 @@ public class Pri extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_txtTiempoenHorasKeyTyped
-
+    //para validar que el txt solo reciba numeros y no letras
     private void txtTiempoenMinutosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoenMinutosKeyTyped
         char c = evt.getKeyChar();
 
@@ -278,7 +278,7 @@ public class Pri extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtTiempoenMinutosKeyTyped
-
+    //para validar que el txt solo reciba numeros y no letras
     private void txtTiempoenSegundosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoenSegundosKeyTyped
         char c = evt.getKeyChar();
 
