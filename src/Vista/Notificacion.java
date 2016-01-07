@@ -224,7 +224,7 @@ public class Notificacion extends javax.swing.JFrame {
     private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
         dispose();
         Model.Time TiempoExtra = new Model.Time();
-        String TiempoEnHoras = "0", TiempoEnMinutos = "0", TiempoEnSegundos = "5";
+        String TiempoEnHoras = "0", TiempoEnMinutos = "5", TiempoEnSegundos = "0";
         
         try 
         {
