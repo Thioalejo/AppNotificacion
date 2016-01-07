@@ -37,10 +37,12 @@ public class Notificacion extends javax.swing.JFrame {
         iniciarIcono();
         initComponents();
     }
+    
 //metodo que pone la notificacion al iniciar la ventana
 
-    private void instanciarTray() {
-        trayIcon = new TrayIcon(imagenIcon.getImage(), "Abrir para editar", popupMenu1);
+    private void instanciarTray() 
+    {                
+        trayIcon = new TrayIcon(imagenIcon.getImage(),"Tiempo De Espera",  popupMenu1);
         trayIcon.setImageAutoSize(true);
         systemtray = systemtray.getSystemTray();
     }

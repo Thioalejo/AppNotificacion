@@ -16,6 +16,32 @@ import java.util.logging.Logger;
  */
 public class Time {
 
+    private static int horas = 0, minutos = 0, segundos = 0;
+
+    public int getHoras() {
+        return horas;
+    }
+
+    public void setHoras(int horas) {
+        this.horas = horas;
+    }
+
+    public int getMinutos() {
+        return minutos;
+    }
+
+    public void setMinutos(int minutos) {
+        this.minutos = minutos;
+    }
+
+    public int getSegundos() {
+        return segundos;
+    }
+
+    public void setSegundos(int segundos) {
+        this.segundos = segundos;
+    }
+
     public Time() {
 
     }
@@ -25,11 +51,6 @@ public class Time {
             String TiempoEnMinutos,
             String TiempoEnSegundos
     ) throws InterruptedException {
-
-        int horas, minutos, segundos;
-        horas = 0;
-        minutos = 0;
-        segundos = 0;
 
         int TiempoHoras = Integer.parseInt(TiempoEnHoras);
         int TiempoMinutos = Integer.parseInt(TiempoEnMinutos);
@@ -47,7 +68,9 @@ public class Time {
                 horas = horas + 1;
             }
             System.out.println("Corre Tiempo: " + horas + ":" + minutos + ":" + segundos);
+
         }
 
     }
+
 }
