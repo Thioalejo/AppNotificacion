@@ -4,8 +4,9 @@
  */
 package Vista;
 
+import Model.DatosNotificacion;
 import Model.Time;
-import com.sun.xml.internal.ws.policy.sourcemodel.ModelNode;
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.awt.Color;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
@@ -15,16 +16,19 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author user
  */
-public class Notificacion extends javax.swing.JFrame {
+public class Notificacion extends javax.swing.JFrame  {
 
     private TrayIcon trayIcon;
     private SystemTray systemtray;
     private ImageIcon imagenIcon;
+    private String  DatoNotificacion;
 
+  
     /**
      * Creates new form Notificacion
      */
@@ -40,9 +44,16 @@ public class Notificacion extends javax.swing.JFrame {
     
 //metodo que pone la notificacion al iniciar la ventana
 
-    private void instanciarTray() 
-    {                
-        trayIcon = new TrayIcon(imagenIcon.getImage(),"Tiempo De Espera",  popupMenu1);
+    private void instanciarTray () 
+    {   
+        
+       Model.DatosNotificacion Pr  = new DatosNotificacion();
+       //DatoNotificacionGe.setDatoNotificacion("Hola");
+       DatoNotificacion = Pr.getDatonotificacion();
+        //System.out.println("dato"+DatoNotificacion);
+        
+       
+        trayIcon = new TrayIcon(imagenIcon.getImage(),"Notificacion: "+DatoNotificacion,  popupMenu1);
         trayIcon.setImageAutoSize(true);
         systemtray = systemtray.getSystemTray();
     }
@@ -60,9 +71,13 @@ public class Notificacion extends javax.swing.JFrame {
     }
 
     //metodo que recibe el dato a mostrar como notificacion
-    public void DatoAMostar(String Dato) {
-
+    public void DatoAMostar(String Dato) 
+    {
+        
+    
+        System.out.println("dato"+DatoNotificacion);
         lblParaMostrarNotificacion.setText(Dato);
+        
     }
 
     /**
@@ -210,7 +225,7 @@ public class Notificacion extends javax.swing.JFrame {
     private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
         dispose();
         Model.Time TiempoExtra = new Model.Time();
-        String TiempoEnHoras = "0", TiempoEnMinutos = "5", TiempoEnSegundos = "0";
+        String TiempoEnHoras = "0", TiempoEnMinutos = "0", TiempoEnSegundos = "2";
         
         try 
         {
@@ -225,6 +240,7 @@ public class Notificacion extends javax.swing.JFrame {
         NotificacionExtra.setVisible(true);
         NotificacionExtra.setLocation(980, 580);
         NotificacionExtra.setAlwaysOnTop(true);
+        lblParaMostrarNotificacion.setText(lblParaMostrarNotificacion.getText());
         systemtray.remove(trayIcon);
         this.setVisible(false);
         

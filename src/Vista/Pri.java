@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Model.DatosNotificacion;
 import Model.Time;
 import java.awt.Color;
 import java.awt.SystemTray;
@@ -22,6 +23,16 @@ public class Pri extends javax.swing.JFrame {
     private TrayIcon trayIcon;
     private SystemTray systemtray;
     private ImageIcon imagenIcon;
+    private static String  DatoNotificacion;
+
+    public String  getDatoNotificacion() {
+        return DatoNotificacion;
+    }
+
+    public  void setDatoNotificacion(String DatoNotificacion1) {
+        Pri.DatoNotificacion = DatoNotificacion1;
+    }
+    
 
     /**
      * Creates new form Pri
@@ -224,11 +235,16 @@ public class Pri extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
             } else {
+                
+                Model.DatosNotificacion pr = new DatosNotificacion();
+                pr.setDatonotificacion(txtTareaPendiente.getText());
                 // /se crea instancia del objeto de la pantalla notificacion y se le da un color tamaño y posicion, 
                 //y se le envia el dato de tarea pendiente
                 Vista.Notificacion run = new Notificacion();
                 run.getContentPane().setBackground(Color.LIGHT_GRAY);
-                run.DatoAMostar(txtTareaPendiente.getText());
+                
+                
+                run.DatoAMostar(pr.getDatonotificacion());
                 run.setLocation(980, 580);
                 run.setAlwaysOnTop(true);
                 dispose();
