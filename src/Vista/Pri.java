@@ -232,25 +232,13 @@ public class Pri extends javax.swing.JFrame {
             {
 
                 JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
-            } else {
+            } 
+            else
+            {
 
-                Model.DatosNotificacion pr = new DatosNotificacion();
-                pr.setDatonotificacion(txtTareaPendiente.getText());
-                // /se crea instancia del objeto de la pantalla notificacion y se le da un color tamaño y posicion, 
-                //y se le envia el dato de tarea pendiente
-                Vista.Notificacion run = new Notificacion();
-                run.DatoAMostar(pr.getDatonotificacion());
-                //para cerrar formulario actual luego de enviar el dato
-                dispose();
-
-                ///instancia del tiempo para que espere el tiempo ingresado por el usuario
-                Model.Time tiempo = new Time();
-                try {   //se envian los datos de hora, minutos y tiempo
-                    tiempo.Tiempo(txtTiempoenHoras.getText(), txtTiempoenMinutos.getText(), txtTiempoenSegundos.getText());
-
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
-                }
+                EnviarDatosYRecivirDatosNotificacion();
+                ObtenerTiempoIngresadoYEnviarlo();
+                
 
             }
 
@@ -259,6 +247,29 @@ public class Pri extends javax.swing.JFrame {
         }
     }
 
+    public void ObtenerTiempoIngresadoYEnviarlo()
+    {
+        ///instancia del tiempo para que espere el tiempo ingresado por el usuario
+                Model.Time tiempo = new Time();
+                try {   //se envian los datos de hora, minutos y tiempo
+                    tiempo.Tiempo(txtTiempoenHoras.getText(), txtTiempoenMinutos.getText(), txtTiempoenSegundos.getText());
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
+                }
+    }
+    
+    public void EnviarDatosYRecivirDatosNotificacion()
+    {
+        Model.DatosNotificacion pr = new DatosNotificacion();
+                pr.setDatonotificacion(txtTareaPendiente.getText());
+                ///se crea instancia del objeto de la pantalla notificacion, y se le envia el dato de tarea pendiente
+                Vista.Notificacion run = new Notificacion();
+                run.DatoAMostar(pr.getDatonotificacion());
+                //para cerrar formulario actual luego de enviar el dato
+                dispose();
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         validarDatosdeVentaPri();
