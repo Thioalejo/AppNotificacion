@@ -5,7 +5,8 @@
         <group>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/AppNotificarRecordatorios1/src/Vista/Pri.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/AppNotificarRecordatorios1/src/Vista/Notificacion.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/AppNotificarRecordatorios1/src/Control/AppNotificarRecordatorios1.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/AppNotificarRecordatorios1/src/Model/DatosNotificacion.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/AppNotificarRecordatorios1/src/Model/Time.java</file>
         </group>
     </open-files>
 </project-private>

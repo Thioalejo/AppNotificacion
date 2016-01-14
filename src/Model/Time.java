@@ -64,6 +64,8 @@ public class Time {
             System.out.println("Corre Tiempo: " + horas + ":" + minutos + ":" + segundos);
 
         }
+        
+        horas=0;minutos=0;segundos=0;
 
     }
 

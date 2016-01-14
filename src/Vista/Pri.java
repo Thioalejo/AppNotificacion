@@ -23,16 +23,15 @@ public class Pri extends javax.swing.JFrame {
     private TrayIcon trayIcon;
     private SystemTray systemtray;
     private ImageIcon imagenIcon;
-    private static String  DatoNotificacion;
+    private static String DatoNotificacion;
 
-    public String  getDatoNotificacion() {
+    public String getDatoNotificacion() {
         return DatoNotificacion;
     }
 
-    public  void setDatoNotificacion(String DatoNotificacion1) {
+    public void setDatoNotificacion(String DatoNotificacion1) {
         Pri.DatoNotificacion = DatoNotificacion1;
     }
-    
 
     /**
      * Creates new form Pri
@@ -225,28 +224,23 @@ public class Pri extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+    public void validarDatosdeVentaPri() {
         try {
             if ("".equals(txtTiempoenHoras.getText())
                     || "".equals(txtTiempoenMinutos.getText())
-                    || "".equals(txtTiempoenSegundos.getText())) {
+                    || "".equals(txtTiempoenSegundos.getText())) 
+            {
 
                 JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
             } else {
-                
+
                 Model.DatosNotificacion pr = new DatosNotificacion();
                 pr.setDatonotificacion(txtTareaPendiente.getText());
                 // /se crea instancia del objeto de la pantalla notificacion y se le da un color tamaño y posicion, 
                 //y se le envia el dato de tarea pendiente
                 Vista.Notificacion run = new Notificacion();
-                run.getContentPane().setBackground(Color.LIGHT_GRAY);
-                
-                
                 run.DatoAMostar(pr.getDatonotificacion());
-                run.setLocation(980, 580);
-                run.setAlwaysOnTop(true);
+                //para cerrar formulario actual luego de enviar el dato
                 dispose();
 
                 ///instancia del tiempo para que espere el tiempo ingresado por el usuario
@@ -257,12 +251,17 @@ public class Pri extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
                 }
-                run.setVisible(true);
+
             }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + e.getMessage());
         }
+    }
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        validarDatosdeVentaPri();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     //para validar que el txt solo reciba numeros y no letras

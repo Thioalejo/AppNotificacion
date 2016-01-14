@@ -40,8 +40,19 @@ public class Notificacion extends javax.swing.JFrame  {
         instanciarTray();
         iniciarIcono();
         initComponents();
+        ParametrosDeVentanNotificacion();
+        
+        
     }
     
+    
+    public void ParametrosDeVentanNotificacion()
+    {
+        getContentPane().setBackground(Color.LIGHT_GRAY);
+        setLocation(980, 580);
+        setAlwaysOnTop(true);
+        setVisible(true);
+    }
 //metodo que pone la notificacion al iniciar la ventana
 
     private void instanciarTray () 
@@ -221,8 +232,9 @@ public class Notificacion extends javax.swing.JFrame  {
 //        systemtray.remove(trayIcon);
 //        this.setVisible(false);
     }//GEN-LAST:event_btnTerminarNotificacionActionPerformed
-
-    private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
+    
+    public void CincoMinutosMas()
+    {
         dispose();
         Model.Time TiempoExtra = new Model.Time();
         String TiempoEnHoras = "0", TiempoEnMinutos = "0", TiempoEnSegundos = "2";
@@ -236,13 +248,19 @@ public class Notificacion extends javax.swing.JFrame  {
             Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
         }
         dispose();
-        Notificacion NotificacionExtra = new Notificacion();
-        NotificacionExtra.setVisible(true);
-        NotificacionExtra.setLocation(980, 580);
-        NotificacionExtra.setAlwaysOnTop(true);
-        lblParaMostrarNotificacion.setText(lblParaMostrarNotificacion.getText());
-        systemtray.remove(trayIcon);
-        this.setVisible(false);
+        
+        ParametrosDeVentanNotificacion();
+//        Notificacion NotificacionExtra = new Notificacion();
+//        NotificacionExtra.setVisible(true);
+//        NotificacionExtra.setLocation(980, 580);
+//        NotificacionExtra.setAlwaysOnTop(true);
+//        lblParaMostrarNotificacion.setText(lblParaMostrarNotificacion.getText());
+//        systemtray.remove(trayIcon);
+//        this.setVisible(false);
+    }
+    
+    private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
+        CincoMinutosMas();
         
     }//GEN-LAST:event_btnCincoMinutosMasActionPerformed
 
