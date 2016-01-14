@@ -201,11 +201,14 @@ public class Pri extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,17 +231,13 @@ public class Pri extends javax.swing.JFrame {
         try {
             if ("".equals(txtTiempoenHoras.getText())
                     || "".equals(txtTiempoenMinutos.getText())
-                    || "".equals(txtTiempoenSegundos.getText())) 
-            {
+                    || "".equals(txtTiempoenSegundos.getText())) {
 
                 JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
-            } 
-            else
-            {
+            } else {
 
                 EnviarDatosYRecivirDatosNotificacion();
                 ObtenerTiempoIngresadoYEnviarlo();
-                
 
             }
 
@@ -247,29 +246,29 @@ public class Pri extends javax.swing.JFrame {
         }
     }
 
-    public void ObtenerTiempoIngresadoYEnviarlo()
-    {
+    public void ObtenerTiempoIngresadoYEnviarlo() {
         ///instancia del tiempo para que espere el tiempo ingresado por el usuario
-                Model.Time tiempo = new Time();
-                try {   //se envian los datos de hora, minutos y tiempo
-                    tiempo.Tiempo(txtTiempoenHoras.getText(), txtTiempoenMinutos.getText(), txtTiempoenSegundos.getText());
+        Model.Time tiempo = new Time();
+        try {   //se envian los datos de hora, minutos y tiempo
+            tiempo.Tiempo(txtTiempoenHoras.getText(), txtTiempoenMinutos.getText(), txtTiempoenSegundos.getText());
 
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
-                }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
+        }
     }
-    
-    public void EnviarDatosYRecivirDatosNotificacion()
-    {
+
+    public void EnviarDatosYRecivirDatosNotificacion() {
         Model.DatosNotificacion pr = new DatosNotificacion();
-                pr.setDatonotificacion(txtTareaPendiente.getText());
-                ///se crea instancia del objeto de la pantalla notificacion, y se le envia el dato de tarea pendiente
-                Vista.Notificacion run = new Notificacion();
-                run.DatoAMostar(pr.getDatonotificacion());
-                //para cerrar formulario actual luego de enviar el dato
-                dispose();
+        //se lleva lo que esta en el txtTarea con set a la variable
+        pr.setDatonotificacion(txtTareaPendiente.getText());
+        ///se crea instancia del objeto de la pantalla notificacion, y se le envia el dato de tarea pendiente
+        Vista.Notificacion run = new Notificacion();
+        //con el get se envia el dato al metodo
+        run.DatoAMostar(pr.getDatonotificacion());
+        //para cerrar formulario actual luego de enviar el dato
+        dispose();
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         validarDatosdeVentaPri();
