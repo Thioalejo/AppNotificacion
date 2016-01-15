@@ -25,11 +25,13 @@ public class Pri extends javax.swing.JFrame {
     private ImageIcon imagenIcon;
     private static String DatoNotificacion;
 
-    public String getDatoNotificacion() {
+    public String getDatoNotificacion() 
+    {
         return DatoNotificacion;
     }
 
-    public void setDatoNotificacion(String DatoNotificacion1) {
+    public void setDatoNotificacion(String DatoNotificacion1) 
+    {
         Pri.DatoNotificacion = DatoNotificacion1;
     }
 
@@ -90,8 +92,10 @@ public class Pri extends javax.swing.JFrame {
         jLabel3.setText("En Minutos, Ejemplo :15 = 15 minutos");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Temporizador", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(5, 5, 5))); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setText("HORA:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 32, -1, -1));
 
         txtTiempoenHoras.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTiempoenHoras.setText("0");
@@ -100,8 +104,10 @@ public class Pri extends javax.swing.JFrame {
                 txtTiempoenHorasKeyTyped(evt);
             }
         });
+        jPanel1.add(txtTiempoenHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 29, 20, -1));
 
         jLabel5.setText("MINUTOS:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 61, -1, -1));
 
         txtTiempoenMinutos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTiempoenMinutos.setText("0");
@@ -110,8 +116,10 @@ public class Pri extends javax.swing.JFrame {
                 txtTiempoenMinutosKeyTyped(evt);
             }
         });
+        jPanel1.add(txtTiempoenMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 58, 20, -1));
 
         jLabel6.setText("SEGUNDOS:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 87, -1, -1));
 
         txtTiempoenSegundos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTiempoenSegundos.setText("0");
@@ -120,6 +128,7 @@ public class Pri extends javax.swing.JFrame {
                 txtTiempoenSegundosKeyTyped(evt);
             }
         });
+        jPanel1.add(txtTiempoenSegundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 84, 20, -1));
 
         jButton1.setText("Iniciar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -127,51 +136,7 @@ public class Pri extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTiempoenSegundos))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtTiempoenHoras)
-                                    .addComponent(txtTiempoenMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(30, 30, 30)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtTiempoenHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTiempoenMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTiempoenSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -180,17 +145,17 @@ public class Pri extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addContainerGap(332, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -201,14 +166,11 @@ public class Pri extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(20, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +181,7 @@ public class Pri extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -227,37 +189,48 @@ public class Pri extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    public void validarDatosdeVentaPri() {
+    public void validarDatosdeVentaPri() 
+    {
+        
         try {
-            if ("".equals(txtTiempoenHoras.getText())
+                if ("".equals(txtTiempoenHoras.getText())
                     || "".equals(txtTiempoenMinutos.getText())
-                    || "".equals(txtTiempoenSegundos.getText())) {
+                    || "".equals(txtTiempoenSegundos.getText())) 
+                {
 
-                JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
-            } else {
-
+                    JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
+                } 
+                else 
+                {
+                //llamada a metodo para enviar datos y recibir
                 EnviarDatosYRecivirDatosNotificacion();
+                //se llama el metodo tiempo para tomar tiempo ingresado para la notificacion y lo envia a Time
                 ObtenerTiempoIngresadoYEnviarlo();
+                }
 
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + e.getMessage());
-        }
+            } catch (Exception e) 
+                {
+                    JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + e.getMessage());
+                }
     }
 
-    public void ObtenerTiempoIngresadoYEnviarlo() {
+    public void ObtenerTiempoIngresadoYEnviarlo() 
+    {
         ///instancia del tiempo para que espere el tiempo ingresado por el usuario
         Model.Time tiempo = new Time();
-        try {   //se envian los datos de hora, minutos y tiempo
+        try 
+        {   
+           //se envian los datos de hora, minutos y tiempo
             tiempo.Tiempo(txtTiempoenHoras.getText(), txtTiempoenMinutos.getText(), txtTiempoenSegundos.getText());
 
-        } catch (Exception ex) {
+        } catch (Exception ex) 
+        {
             JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
         }
     }
 
-    public void EnviarDatosYRecivirDatosNotificacion() {
+    public void EnviarDatosYRecivirDatosNotificacion() 
+    {
         Model.DatosNotificacion pr = new DatosNotificacion();
         //se lleva lo que esta en el txtTarea con set a la variable
         pr.setDatonotificacion(txtTareaPendiente.getText());
@@ -267,6 +240,7 @@ public class Pri extends javax.swing.JFrame {
         run.DatoAMostar(pr.getDatonotificacion());
         //para cerrar formulario actual luego de enviar el dato
         dispose();
+        
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -278,7 +252,8 @@ public class Pri extends javax.swing.JFrame {
     private void txtTiempoenHorasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoenHorasKeyTyped
         char c = evt.getKeyChar();
 
-        if (Character.isLetter(c)) {
+        if (Character.isLetter(c)) 
+        {
             getToolkit().beep();
 
             evt.consume();
@@ -292,7 +267,8 @@ public class Pri extends javax.swing.JFrame {
     private void txtTiempoenMinutosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoenMinutosKeyTyped
         char c = evt.getKeyChar();
 
-        if (Character.isLetter(c)) {
+        if (Character.isLetter(c)) 
+        {
             getToolkit().beep();
 
             evt.consume();
@@ -305,7 +281,8 @@ public class Pri extends javax.swing.JFrame {
     private void txtTiempoenSegundosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoenSegundosKeyTyped
         char c = evt.getKeyChar();
 
-        if (Character.isLetter(c)) {
+        if (Character.isLetter(c)) 
+        {
             getToolkit().beep();
 
             evt.consume();

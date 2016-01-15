@@ -61,34 +61,33 @@ public class Notificacion extends javax.swing.JFrame  {
        Model.DatosNotificacion Pr  = new DatosNotificacion();
        //DatoNotificacionGe.setDatoNotificacion("Hola");
        DatoNotificacion = Pr.getDatonotificacion();
-        //System.out.println("dato"+DatoNotificacion);
+       //System.out.println("dato"+DatoNotificacion);
         
        
-        trayIcon = new TrayIcon(imagenIcon.getImage(),"Notificacion: "+DatoNotificacion,  popupMenu1);
-        trayIcon.setImageAutoSize(true);
-        systemtray = systemtray.getSystemTray();
+       trayIcon = new TrayIcon(imagenIcon.getImage(),"Notificacion: "+DatoNotificacion,  popupMenu1);
+       trayIcon.setImageAutoSize(true);
+       systemtray = systemtray.getSystemTray();
     }
 
     ///metodo que iniciara la notificacion, la pone en false, que indica que se pone en la barra de notificacion
     private void iniciarIcono() {
         try {
-            if (SystemTray.isSupported()) {
-                systemtray.add(trayIcon);
-                this.setVisible(false);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Excepcion: " + e.getMessage());
-        }
+                if (SystemTray.isSupported()) 
+                {
+                    systemtray.add(trayIcon);
+                    this.setVisible(false);
+                }
+            } 
+        catch (Exception e) 
+           {
+              JOptionPane.showMessageDialog(this, "Excepcion: " + e.getMessage());
+           }
     }
 
     //metodo que recibe el dato a mostrar como notificacion
     public void DatoAMostar(String Dato) 
     {
-        
-    
-        System.out.println("dato"+DatoNotificacion);
-        lblParaMostrarNotificacion.setText(Dato);
-        
+        lblParaMostrarNotificacion.setText(Dato); 
     }
 
     /**
@@ -223,14 +222,6 @@ public class Notificacion extends javax.swing.JFrame  {
 
     private void btnTerminarNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarNotificacionActionPerformed
             System.exit(0);
-
-//        dispose();
-//        Vista.Pri run = new Pri();
-//        run.getContentPane().setBackground(Color.LIGHT_GRAY);
-//        run.setVisible(true);
-//        dispose();
-//        systemtray.remove(trayIcon);
-//        this.setVisible(false);
     }//GEN-LAST:event_btnTerminarNotificacionActionPerformed
     
     public void CincoMinutosMas()
@@ -247,21 +238,13 @@ public class Notificacion extends javax.swing.JFrame  {
         {
             Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        dispose();
-        
+            
         ParametrosDeVentanNotificacion();
-//        Notificacion NotificacionExtra = new Notificacion();
-//        NotificacionExtra.setVisible(true);
-//        NotificacionExtra.setLocation(980, 580);
-//        NotificacionExtra.setAlwaysOnTop(true);
-//        lblParaMostrarNotificacion.setText(lblParaMostrarNotificacion.getText());
-//        systemtray.remove(trayIcon);
-//        this.setVisible(false);
+
     }
     
     private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
-        CincoMinutosMas();
-        
+        CincoMinutosMas();    
     }//GEN-LAST:event_btnCincoMinutosMasActionPerformed
 
     /**

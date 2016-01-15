@@ -9,21 +9,23 @@ package Model;
  *
  * @author user
  */
-public class DatosNotificacion 
-{
-   private static String Datonotificacion;
+public class DatosNotificacion {
 
-    public static String getDatonotificacion() {
+    private static String Datonotificacion;
+
+    public static String getDatonotificacion() 
+    {
         return Datonotificacion;
     }
 
-    public static void setDatonotificacion(String Datonotificacion) {
+    public static void setDatonotificacion(String Datonotificacion) 
+    {
         DatosNotificacion.Datonotificacion = Datonotificacion;
     }
-   
-    public DatosNotificacion()
+
+    public DatosNotificacion() 
     {
-        
+
     }
-    
+
 }
