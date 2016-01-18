@@ -6,7 +6,7 @@ package Vista;
 
 import Model.DatosNotificacion;
 import Model.Time;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
@@ -16,80 +16,84 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author user
  */
-public class Notificacion extends javax.swing.JFrame  {
+public class Notificacion extends javax.swing.JFrame {
 
     private TrayIcon trayIcon;
     private SystemTray systemtray;
     private ImageIcon imagenIcon;
     private String  DatoNotificacion;
 
-  
     /**
      * Creates new form Notificacion
      */
-    public Notificacion() {
+    public Notificacion() 
+    {   
+        
+        initComponents();
         ///para poner icono a la aplicacion (this.getClass().getRe... busca en el proyecto y pone la imagen)
         imagenIcon = new ImageIcon(this.getClass().getResource("/Imagenes/Alarma2.png"));
         //con this.set ...  se ubica la imagen en el frame.
         this.setIconImage(imagenIcon.getImage());
         instanciarTray();
         iniciarIcono();
-        initComponents();
-        ParametrosDeVentanNotificacion();
         
         
     }
     
-    
-    public void ParametrosDeVentanNotificacion()
-    {
-        getContentPane().setBackground(Color.LIGHT_GRAY);
-        setLocation(980, 580);
-        setAlwaysOnTop(true);
-        setVisible(true);
-    }
-//metodo que pone la notificacion al iniciar la ventana
-
-    private void instanciarTray () 
+    public  void ParametrosDeVentana() throws AWTException
     {   
+        systemtray.add(trayIcon);
+        this.setVisible(false);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
+        setLocation(980,580);
+        setAlwaysOnTop(true);
         
-       Model.DatosNotificacion Pr  = new DatosNotificacion();
-       //DatoNotificacionGe.setDatoNotificacion("Hola");
-       DatoNotificacion = Pr.getDatonotificacion();
-       //System.out.println("dato"+DatoNotificacion);
+        this.setVisible(true);
         
-       
-       trayIcon = new TrayIcon(imagenIcon.getImage(),"Notificacion: "+DatoNotificacion,  popupMenu1);
-       trayIcon.setImageAutoSize(true);
-       systemtray = systemtray.getSystemTray();
+        
     }
-
-    ///metodo que iniciara la notificacion, la pone en false, que indica que se pone en la barra de notificacion
-    private void iniciarIcono() {
-        try {
-                if (SystemTray.isSupported()) 
-                {
-                    systemtray.add(trayIcon);
-                    this.setVisible(false);
-                }
-            } 
-        catch (Exception e) 
-           {
-              JOptionPane.showMessageDialog(this, "Excepcion: " + e.getMessage());
-           }
-    }
-
-    //metodo que recibe el dato a mostrar como notificacion
-    public void DatoAMostar(String Dato) 
+    
+    
+//metodo que pone la notificacion al iniciar la ventana
+     private void instanciarTray()
     {
-        lblParaMostrarNotificacion.setText(Dato); 
+         Model.DatosNotificacion Pr  = new DatosNotificacion();
+       //DatoNotificacionGe.setDatoNotificacion("Hola");
+        DatoNotificacion = Pr.getDatonotificacion();
+       //System.out.println("dato"+DatoNotificacion);
+       
+        trayIcon = new TrayIcon(imagenIcon.getImage(), "Notificacion: "+DatoNotificacion , popupMenu1 );
+        trayIcon.setImageAutoSize(true);
+        systemtray = systemtray.getSystemTray();       
     }
 
+     ///metodo que iniciara la notificacion, la pone en false, que indica que se pone en la barra de notificacion
+     private void iniciarIcono()
+     {
+       try 
+        {
+            if(SystemTray.isSupported())
+            {
+                systemtray.add(trayIcon);
+                this.setVisible(false);
+            }
+        } catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(this,"Excepcion: "+ e.getMessage());
+        }  
+     }
+     
+     
+     
+     //metodo que recibe el dato a mostrar como notificacion
+    public void DatoAMostar(String Dato) {
+
+        lblParaMostrarNotificacion.setText(Dato);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,27 +105,31 @@ public class Notificacion extends javax.swing.JFrame  {
 
         popupMenu1 = new java.awt.PopupMenu();
         menuItem1 = new java.awt.MenuItem();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lblParaMostrarNotificacion = new javax.swing.JTextArea();
-        btnTerminarNotificacion = new javax.swing.JButton();
-        btnCincoMinutosMas = new javax.swing.JButton();
 
         popupMenu1.setLabel("popupMenu1");
         popupMenu1.setName("");
+        popupMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                popupMenu1ActionPerformed(evt);
+            }
+        });
 
         menuItem1.setLabel("Menu Desplegable");
         menuItem1.setName("txt");
+        menuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem1ActionPerformed(evt);
+            }
+        });
         popupMenu1.add(menuItem1);
         menuItem1.getAccessibleContext().setAccessibleDescription("1");
 
         popupMenu1.getAccessibleContext().setAccessibleDescription("");
-
-        jScrollPane2.setViewportView(jTree1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
@@ -149,7 +157,7 @@ public class Notificacion extends javax.swing.JFrame  {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1))
         );
         jPanel1Layout.setVerticalGroup(
@@ -166,20 +174,6 @@ public class Notificacion extends javax.swing.JFrame  {
         lblParaMostrarNotificacion.setDoubleBuffered(true);
         jScrollPane1.setViewportView(lblParaMostrarNotificacion);
 
-        btnTerminarNotificacion.setText("Terminar");
-        btnTerminarNotificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTerminarNotificacionActionPerformed(evt);
-            }
-        });
-
-        btnCincoMinutosMas.setText("5 Minutos Mas");
-        btnCincoMinutosMas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCincoMinutosMasActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,12 +181,7 @@ public class Notificacion extends javax.swing.JFrame  {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnTerminarNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCincoMinutosMas)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -200,11 +189,7 @@ public class Notificacion extends javax.swing.JFrame  {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTerminarNotificacion)
-                    .addComponent(btnCincoMinutosMas))
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
 
@@ -220,32 +205,18 @@ public class Notificacion extends javax.swing.JFrame  {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnTerminarNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarNotificacionActionPerformed
-            System.exit(0);
-    }//GEN-LAST:event_btnTerminarNotificacionActionPerformed
-    
-    public void CincoMinutosMas()
-    {
+    private void menuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem1ActionPerformed
+        Vista.Pri run = new Pri();
+        run.getContentPane().setBackground(Color.LIGHT_GRAY);
+        run.setVisible(true);
         dispose();
-        Model.Time TiempoExtra = new Model.Time();
-        String TiempoEnHoras = "0", TiempoEnMinutos = "0", TiempoEnSegundos = "2";
-        
-        try 
-        {
-            TiempoExtra.Tiempo(TiempoEnHoras, TiempoEnMinutos, TiempoEnSegundos);
-        } 
-        catch (InterruptedException ex) 
-        {
-            Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-        ParametrosDeVentanNotificacion();
+        systemtray.remove(trayIcon);
+        this.setVisible(false);
+    }//GEN-LAST:event_menuItem1ActionPerformed
 
-    }
-    
-    private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
-        CincoMinutosMas();    
-    }//GEN-LAST:event_btnCincoMinutosMasActionPerformed
+    private void popupMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popupMenu1ActionPerformed
+     
+    }//GEN-LAST:event_popupMenu1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,14 +254,10 @@ public class Notificacion extends javax.swing.JFrame  {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCincoMinutosMas;
-    private javax.swing.JButton btnTerminarNotificacion;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTree jTree1;
     private javax.swing.JTextArea lblParaMostrarNotificacion;
     private java.awt.MenuItem menuItem1;
     private java.awt.PopupMenu popupMenu1;

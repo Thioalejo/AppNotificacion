@@ -17,11 +17,11 @@ public class AppNotificarRecordatorios1 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) 
-    {
-        Vista.Pri iniciarVentana = new Pri();
-        iniciarVentana.getContentPane().setBackground(Color.lightGray);
-        iniciarVentana.setVisible(true);
+    public static void main(String[] args) {
+        Vista.Pri run = new Pri();
+        run.getContentPane().setBackground(Color.lightGray);
+        run.setVisible(true);
+
     }
 
 }
