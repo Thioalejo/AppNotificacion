@@ -40,19 +40,23 @@ public class Notificacion extends javax.swing.JFrame {
         this.setIconImage(imagenIcon.getImage());
         instanciarTray();
         iniciarIcono();
-        
+        try {
+            ParametrosDeVentana();
+            this.setVisible(true);
+        } catch (AWTException ex) {
+            Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
     public  void ParametrosDeVentana() throws AWTException
     {   
-        systemtray.add(trayIcon);
-        this.setVisible(false);
+        
         getContentPane().setBackground(Color.LIGHT_GRAY);
         setLocation(980,580);
         setAlwaysOnTop(true);
         
-        this.setVisible(true);
+        //this.setVisible(true);
         
         
     }
@@ -93,6 +97,7 @@ public class Notificacion extends javax.swing.JFrame {
     public void DatoAMostar(String Dato) {
 
         lblParaMostrarNotificacion.setText(Dato);
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.

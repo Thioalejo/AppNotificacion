@@ -243,8 +243,8 @@ public class Pri extends javax.swing.JFrame {
         
         EnviarNoti.setDatonotificacion(txtTareaPendiente.getText());
         
-//        Vista.Notificacion RecibeDato= new Notificacion();
-//        RecibeDato.DatoAMostar(EnviarNoti.getDatonotificacion());
+        Vista.Notificacion RecibeDato= new Notificacion();
+        RecibeDato.DatoAMostar(EnviarNoti.getDatonotificacion());
         
         
         
