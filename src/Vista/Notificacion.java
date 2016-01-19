@@ -236,7 +236,7 @@ public class Notificacion extends javax.swing.JFrame {
         try 
         {
             Time cincoMas = new Time();
-            cincoMas.Tiempo("0", "0", "2");
+            cincoMas.Tiempo("0", "5", "0");
         } catch (InterruptedException ex) 
         {
             Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);

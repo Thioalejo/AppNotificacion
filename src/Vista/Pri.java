@@ -190,15 +190,13 @@ Notificacion a = new Notificacion();
             
             else 
                 {
-                   
-                    
+                 
                     EnviarDatosYRecivirDatosNotificacion();
                     dispose();
                     a.iniciaricono();
                     ObtenerTiempoIngresadoYEnviarlo();
                     a.ParametrosDeVentana();
-                    
-                    
+      
                 }
 
         
