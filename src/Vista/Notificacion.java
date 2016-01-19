@@ -37,27 +37,17 @@ public class Notificacion extends javax.swing.JFrame {
         imagenIcon = new ImageIcon(this.getClass().getResource("/Imagenes/Alarma2.png"));
         //con this.set ...  se ubica la imagen en el frame.
         this.setIconImage(imagenIcon.getImage());
-//        instanciarTray();
-//        iniciarIcono();
-//        
-//        try {
-//            ParametrosDeVentana();
-//        } catch (AWTException ex) {
-//            Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
-
     }
 
     Model.DatosNotificacion Pr = new DatosNotificacion();
-    public void iniciaricono()
-    {
+
+    public void iniciaricono() {
         instanciarTray();
         iniciarIcono();
     }
-    
+
     public void ParametrosDeVentana() throws AWTException {
-        
+
         getContentPane().setBackground(Color.LIGHT_GRAY);
         setLocation(980, 580);
         setAlwaysOnTop(true);
@@ -67,7 +57,7 @@ public class Notificacion extends javax.swing.JFrame {
 
 //metodo que pone la notificacion al iniciar la ventana
     private void instanciarTray() {
-        
+
         //DatoNotificacionGe.setDatoNotificacion("Hola");
         DatoNotificacion = Pr.getDatonotificacion();
         //System.out.println("dato"+DatoNotificacion);
@@ -112,6 +102,8 @@ public class Notificacion extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lblParaMostrarNotificacion = new javax.swing.JTextArea();
+        btnTerminar = new javax.swing.JButton();
+        btnCincoMinutosMas = new javax.swing.JButton();
 
         popupMenu1.setLabel("popupMenu1");
         popupMenu1.setName("");
@@ -176,6 +168,20 @@ public class Notificacion extends javax.swing.JFrame {
         lblParaMostrarNotificacion.setDoubleBuffered(true);
         jScrollPane1.setViewportView(lblParaMostrarNotificacion);
 
+        btnTerminar.setText("Terminar");
+        btnTerminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTerminarActionPerformed(evt);
+            }
+        });
+
+        btnCincoMinutosMas.setText("5 Minutos");
+        btnCincoMinutosMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCincoMinutosMasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,7 +189,12 @@ public class Notificacion extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnTerminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCincoMinutosMas)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -191,8 +202,12 @@ public class Notificacion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTerminar)
+                    .addComponent(btnCincoMinutosMas))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,9 +231,33 @@ public class Notificacion extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_menuItem1ActionPerformed
 
+    public void cincominutosmas() 
+    {
+        try 
+        {
+            Time cincoMas = new Time();
+            cincoMas.Tiempo("0", "0", "2");
+        } catch (InterruptedException ex) 
+        {
+            Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private void popupMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popupMenu1ActionPerformed
 
     }//GEN-LAST:event_popupMenu1ActionPerformed
+
+    private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnTerminarActionPerformed
+
+    private void btnCincoMinutosMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCincoMinutosMasActionPerformed
+        dispose();
+        cincominutosmas();
+        //pone visible la actual luego de pasar el tiempo, osea la notificacion que se cerro antes de empezar el tiempo con el dispose();
+        this.setVisible(true);
+        
+    }//GEN-LAST:event_btnCincoMinutosMasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +295,8 @@ public class Notificacion extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCincoMinutosMas;
+    private javax.swing.JButton btnTerminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
