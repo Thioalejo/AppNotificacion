@@ -6,6 +6,7 @@ package Vista;
 
 import Model.DatosNotificacion;
 import Model.Time;
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
@@ -23,7 +24,7 @@ public class Pri extends javax.swing.JFrame {
     private TrayIcon trayIcon;
     private SystemTray systemtray;
     private ImageIcon imagenIcon;
-    Model.DatosNotificacion EnviarNoti = new DatosNotificacion();
+    
     /**
      * Creates new form Pri
      */
@@ -176,7 +177,7 @@ public class Pri extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+Notificacion a = new Notificacion();
     
     public void validardatosVentanPri()
     {
@@ -189,14 +190,13 @@ public class Pri extends javax.swing.JFrame {
             
             else 
                 {
-                    dispose();
+                   
                     
                     EnviarDatosYRecivirDatosNotificacion();
-                    
+                    dispose();
+                    a.iniciaricono();
                     ObtenerTiempoIngresadoYEnviarlo();
-                    
-                    //ParametrosDeVentana();
-                    
+                    a.ParametrosDeVentana();
                     
                     
                 }
@@ -208,17 +208,7 @@ public class Pri extends javax.swing.JFrame {
         }
     }
     
-      public  void ParametrosDeVentana()
-    {   
-        Notificacion no = new Notificacion();
-        no.getContentPane().setBackground(Color.LIGHT_GRAY);
-        no.setLocation(980,580);
-        no.setAlwaysOnTop(true);
-       
-        no.setVisible(true);
-        
-        
-    }
+   
     
      public void ObtenerTiempoIngresadoYEnviarlo() 
     {
@@ -232,9 +222,7 @@ public class Pri extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
             }
-           
-            
-           
+       
     }
    
       public void EnviarDatosYRecivirDatosNotificacion() 
@@ -243,9 +231,9 @@ public class Pri extends javax.swing.JFrame {
         
         EnviarNoti.setDatonotificacion(txtTareaPendiente.getText());
         
-        Vista.Notificacion RecibeDato= new Notificacion();
-        RecibeDato.DatoAMostar(EnviarNoti.getDatonotificacion());
-        
+//        Vista.Notificacion RecibeDato= new Notificacion();
+//        RecibeDato.DatoAMostar(EnviarNoti.getDatonotificacion());
+         
         
         
     }

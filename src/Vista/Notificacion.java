@@ -25,80 +25,77 @@ public class Notificacion extends javax.swing.JFrame {
     private TrayIcon trayIcon;
     private SystemTray systemtray;
     private ImageIcon imagenIcon;
-    private String  DatoNotificacion;
+    private String DatoNotificacion;
 
     /**
      * Creates new form Notificacion
      */
-    public Notificacion() 
-    {   
-        
+    public Notificacion() {
+
         initComponents();
         ///para poner icono a la aplicacion (this.getClass().getRe... busca en el proyecto y pone la imagen)
         imagenIcon = new ImageIcon(this.getClass().getResource("/Imagenes/Alarma2.png"));
         //con this.set ...  se ubica la imagen en el frame.
         this.setIconImage(imagenIcon.getImage());
-        instanciarTray();
-        iniciarIcono();
-        try {
-            ParametrosDeVentana();
-            this.setVisible(true);
-        } catch (AWTException ex) {
-            Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        instanciarTray();
+//        iniciarIcono();
+//        
+//        try {
+//            ParametrosDeVentana();
+//        } catch (AWTException ex) {
+//            Logger.getLogger(Notificacion.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
-    }
-    
-    public  void ParametrosDeVentana() throws AWTException
-    {   
-        
-        getContentPane().setBackground(Color.LIGHT_GRAY);
-        setLocation(980,580);
-        setAlwaysOnTop(true);
-        
-        //this.setVisible(true);
-        
-        
-    }
-    
-    
-//metodo que pone la notificacion al iniciar la ventana
-     private void instanciarTray()
-    {
-         Model.DatosNotificacion Pr  = new DatosNotificacion();
-       //DatoNotificacionGe.setDatoNotificacion("Hola");
-        DatoNotificacion = Pr.getDatonotificacion();
-       //System.out.println("dato"+DatoNotificacion);
-       
-        trayIcon = new TrayIcon(imagenIcon.getImage(), "Notificacion: "+DatoNotificacion , popupMenu1 );
-        trayIcon.setImageAutoSize(true);
-        systemtray = systemtray.getSystemTray();       
+
     }
 
-     ///metodo que iniciara la notificacion, la pone en false, que indica que se pone en la barra de notificacion
-     private void iniciarIcono()
-     {
-       try 
-        {
-            if(SystemTray.isSupported())
-            {
+    Model.DatosNotificacion Pr = new DatosNotificacion();
+    public void iniciaricono()
+    {
+        instanciarTray();
+        iniciarIcono();
+    }
+    
+    public void ParametrosDeVentana() throws AWTException {
+        
+        getContentPane().setBackground(Color.LIGHT_GRAY);
+        setLocation(980, 580);
+        setAlwaysOnTop(true);
+        DatoAMostar(Pr.getDatonotificacion());
+        setVisible(true);
+    }
+
+//metodo que pone la notificacion al iniciar la ventana
+    private void instanciarTray() {
+        
+        //DatoNotificacionGe.setDatoNotificacion("Hola");
+        DatoNotificacion = Pr.getDatonotificacion();
+        //System.out.println("dato"+DatoNotificacion);
+
+        trayIcon = new TrayIcon(imagenIcon.getImage(), "Notificacion: " + DatoNotificacion, popupMenu1);
+        trayIcon.setImageAutoSize(true);
+        systemtray = systemtray.getSystemTray();
+    }
+
+    ///metodo que iniciara la notificacion, la pone en false, que indica que se pone en la barra de notificacion
+    private void iniciarIcono() {
+        try {
+            if (SystemTray.isSupported()) {
                 systemtray.add(trayIcon);
                 this.setVisible(false);
             }
-        } catch (Exception e) 
-        {
-            JOptionPane.showMessageDialog(this,"Excepcion: "+ e.getMessage());
-        }  
-     }
-     
-     
-     
-     //metodo que recibe el dato a mostrar como notificacion
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Excepcion: " + e.getMessage());
+        }
+    }
+
+    //metodo que recibe el dato a mostrar como notificacion
     public void DatoAMostar(String Dato) {
 
         lblParaMostrarNotificacion.setText(Dato);
-        
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -220,7 +217,7 @@ public class Notificacion extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItem1ActionPerformed
 
     private void popupMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popupMenu1ActionPerformed
-     
+
     }//GEN-LAST:event_popupMenu1ActionPerformed
 
     /**
