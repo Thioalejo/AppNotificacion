@@ -5,7 +5,9 @@
 package Vista;
 
 import Model.DatosNotificacion;
+import Model.DatosReloj;
 import Model.Time;
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.SystemTray;
@@ -63,6 +65,14 @@ public class Pri extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtTiempoenSegundos1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtTiempoenMinutos1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtTiempoenHoras1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        btnIniciarPorhora = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recordatorios");
@@ -115,6 +125,42 @@ public class Pri extends javax.swing.JFrame {
 
         jLabel6.setText("SEGUNDOS:");
 
+        jLabel7.setText("Ingrese hora:");
+
+        txtTiempoenSegundos1.setText("0");
+        txtTiempoenSegundos1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTiempoenSegundos1KeyTyped(evt);
+            }
+        });
+
+        jLabel8.setText("SEGUNDOS:");
+
+        txtTiempoenMinutos1.setText("0");
+        txtTiempoenMinutos1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTiempoenMinutos1KeyTyped(evt);
+            }
+        });
+
+        jLabel9.setText("MINUTOS:");
+
+        txtTiempoenHoras1.setText("0");
+        txtTiempoenHoras1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTiempoenHoras1KeyTyped(evt);
+            }
+        });
+
+        jLabel10.setText("HORA:");
+
+        btnIniciarPorhora.setText("Iniciar");
+        btnIniciarPorhora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarPorhoraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,36 +170,72 @@ public class Pri extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTiempoenHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTiempoenMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTiempoenHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtTiempoenMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtTiempoenSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(49, 49, 49))))
+                            .addComponent(jLabel2)
+                            .addComponent(jButton1))
+                        .addContainerGap(538, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
+                                .addComponent(txtTiempoenHoras1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTiempoenSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTiempoenMinutos1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTiempoenSegundos1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7)
+                            .addComponent(btnIniciarPorhora))
+                        .addGap(77, 77, 77))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTiempoenSegundos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel10)
+                                .addComponent(txtTiempoenHoras1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)
+                                .addComponent(txtTiempoenMinutos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8)))
+                        .addGap(27, 27, 27)
+                        .addComponent(btnIniciarPorhora)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -169,7 +251,7 @@ public class Pri extends javax.swing.JFrame {
                         .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -231,9 +313,11 @@ Notificacion a = new Notificacion();
         
 //        Vista.Notificacion RecibeDato= new Notificacion();
 //        RecibeDato.DatoAMostar(EnviarNoti.getDatonotificacion());
-         
-        
-        
+    }
+      
+    public void ObtenerTiempoEnHorasIngresadoYEnviarlo()
+    {
+        Model.DatosReloj DatoRelojo = new DatosReloj();
     }
      
       
@@ -285,6 +369,32 @@ Notificacion a = new Notificacion();
         }
     }//GEN-LAST:event_txtTiempoenSegundosKeyTyped
 
+    private void txtTiempoenSegundos1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoenSegundos1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTiempoenSegundos1KeyTyped
+
+    private void txtTiempoenMinutos1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoenMinutos1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTiempoenMinutos1KeyTyped
+
+    private void txtTiempoenHoras1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiempoenHoras1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTiempoenHoras1KeyTyped
+
+    
+    
+    private void btnIniciarPorhoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPorhoraActionPerformed
+        try {
+            EnviarDatosYRecivirDatosNotificacion();
+            dispose();
+            a.iniciaricono();
+            ObtenerTiempoEnHorasIngresadoYEnviarlo();
+            a.ParametrosDeVentana();
+        } catch (AWTException ex) {
+            Logger.getLogger(Pri.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnIniciarPorhoraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -321,17 +431,25 @@ Notificacion a = new Notificacion();
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIniciarPorhora;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtTareaPendiente;
     private javax.swing.JTextField txtTiempoenHoras;
+    private javax.swing.JTextField txtTiempoenHoras1;
     private javax.swing.JTextField txtTiempoenMinutos;
+    private javax.swing.JTextField txtTiempoenMinutos1;
     private javax.swing.JTextField txtTiempoenSegundos;
+    private javax.swing.JTextField txtTiempoenSegundos1;
     // End of variables declaration//GEN-END:variables
 }
