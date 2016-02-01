@@ -26,24 +26,21 @@ public class Pri extends javax.swing.JFrame {
     private TrayIcon trayIcon;
     private SystemTray systemtray;
     private ImageIcon imagenIcon;
-    
+
     /**
      * Creates new form Pri
      */
-    public Pri() 
-    {
+    public Pri() {
         ///para poner icono a la aplicacion (this.getClass().getRe... busca en el proyecto y pone la imagen)
         imagenIcon = new ImageIcon(this.getClass().getResource("/Imagenes/Alarma2.png"));
         //con this.set ...  se ubica la imagen en el frame.
         this.setIconImage(imagenIcon.getImage());
         //instanciarTray();
-       
+
         initComponents();
-        
 
     }
 
- 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -260,72 +257,68 @@ public class Pri extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 Notificacion a = new Notificacion();
-    
-    public void validardatosVentanPri()
-    {
-         try 
-         {
+
+    public void validardatosVentanPri() {
+        try {
             if ("".equals(txtTiempoenHoras.getText()) || "".equals(txtTiempoenMinutos.getText()) || "".equals(txtTiempoenSegundos.getText())) {
 
-            JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
-         } 
-            
-            else 
-                {
-                 
-                    EnviarDatosYRecivirDatosNotificacion();
-                    dispose();
-                    a.iniciaricono();
-                    ObtenerTiempoIngresadoYEnviarlo();
-                    a.ParametrosDeVentana();
-      
-                }
+                JOptionPane.showMessageDialog(null, "¡ HA DEJADO CAMPOS EN BLANCO !");
+            } else {
 
-        
-        } catch (Exception e) 
-        {
+                EnviarDatosYRecivirDatosNotificacion();
+                dispose();
+                a.iniciaricono();
+                ObtenerTiempoIngresadoYEnviarlo();
+                a.ParametrosDeVentana();
+
+            }
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "EError al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + e.getMessage());
         }
     }
-    
-   
-    
-     public void ObtenerTiempoIngresadoYEnviarlo() 
-    {
-        
+
+    public void ObtenerTiempoIngresadoYEnviarlo() {
+
         Model.Time tiempo = new Time();
-            try 
-            {   //se envian los datos de hora, minutos y tiempo
-                tiempo.Tiempo(txtTiempoenHoras.getText(), txtTiempoenMinutos.getText(), txtTiempoenSegundos.getText());
-                
-            } catch (Exception ex) 
-            {
-                JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
-            }
-       
+        try {   //se envian los datos de hora, minutos y tiempo
+            tiempo.Tiempo(txtTiempoenHoras.getText(), txtTiempoenMinutos.getText(), txtTiempoenSegundos.getText());
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al validar datos ingresados(POR FAVOR VERIFIQUE DATOS INGRESADOS): " + ex.getMessage());
+        }
+
     }
-   
-      public void EnviarDatosYRecivirDatosNotificacion() 
-    {
+
+    public void EnviarDatosYRecivirDatosNotificacion() {
         Model.DatosNotificacion EnviarNoti = new DatosNotificacion();
-        
+
         EnviarNoti.setDatonotificacion(txtTareaPendiente.getText());
-        
+
 //        Vista.Notificacion RecibeDato= new Notificacion();
 //        RecibeDato.DatoAMostar(EnviarNoti.getDatonotificacion());
     }
-      
-    public void ObtenerTiempoEnHorasIngresadoYEnviarlo()
-    {
-        Model.DatosReloj DatoRelojo = new DatosReloj();
-    }
-     
-      
-      
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    validardatosVentanPri();
-     
+
+    public void ObtenerTiempoEnHorasIngresadoYEnviarlo(String Horas, String Minutos, String Segundos) throws AWTException {
+//        int HoraObtenida = Integer.parseInt(Horas);
+//        int MinutosObtenida = Integer.parseInt(Minutos);
+//        int SegundosObtenida = Integer.parseInt(Segundos);
+          boolean x=true; 
+          while(x)
+          {
+              Model.DatosReloj DatoRelojo = new DatosReloj();
+                DatoRelojo.DatosReloj(Horas, Minutos, Segundos);
+//          }
         
+          }
+
+    }
+
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        validardatosVentanPri();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     //para validar que el txt solo reciba numeros y no letras
@@ -381,15 +374,13 @@ Notificacion a = new Notificacion();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTiempoenHoras1KeyTyped
 
-    
-    
+
     private void btnIniciarPorhoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPorhoraActionPerformed
         try {
             EnviarDatosYRecivirDatosNotificacion();
             dispose();
             a.iniciaricono();
-            ObtenerTiempoEnHorasIngresadoYEnviarlo();
-            a.ParametrosDeVentana();
+            ObtenerTiempoEnHorasIngresadoYEnviarlo(txtTiempoenHoras1.getText(), txtTiempoenMinutos1.getText(), txtTiempoenSegundos1.getText());
         } catch (AWTException ex) {
             Logger.getLogger(Pri.class.getName()).log(Level.SEVERE, null, ex);
         }
